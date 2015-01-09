@@ -1,0 +1,22 @@
+{% load thumbnail %}
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+
+
+<div class="gallery" id="cmspluginGallery{{ gallery.pk }}">
+	{% for image in images %}
+		<div>
+			<img src="{% thumbnail image.src 115x80 crop %}" alt="{{ image.alt }}" title="{{ image.title }}" rel="#cmspluginGalleryImage{{ image.pk }}" />
+		</div>
+	{% endfor %}
+</div>
+
+{% for image in images %}
+<div class="simple_overlay" id="cmspluginGalleryImage{{ image.pk }}">
+	<img src="{{ image.src.url }}" />
+</div>
+{% endfor %}
+
+<script type="text/javascript">
+	jQuery('#cmspluginGallery{{ gallery.pk }} img').overlay();
+</script>

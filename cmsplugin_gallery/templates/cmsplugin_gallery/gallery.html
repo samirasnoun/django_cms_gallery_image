@@ -1,0 +1,28 @@
+{% load thumbnail %}
+
+
+
+<ul class="bxslider">
+	
+    {% for image in images %}
+		<li>
+			<img src="{% thumbnail image.src 115x80 crop %}" alt="{{ image.alt }}" title="{{ image.title }}"  />
+			
+		</li>
+		 
+	{% endfor %}
+	
+
+</ul>
+
+
+
+<script>
+		
+	$(document).ready(function($){
+		
+		$(".bxslider").bxSlider();
+	});
+	
+</script>	
+

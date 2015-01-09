@@ -1,0 +1,45 @@
+{% load thumbnail debug_tags %}
+
+
+<ul class="bxslider">
+	
+	{% for image in images %}
+		<li>
+			<div class="slide"> <img src="{{ image.src.url }}" />
+		</li>
+	{% endfor %}
+
+</ul>
+
+<script>
+		
+	$(document).ready(function($){
+		$(".bxslider").bxSlider(
+			{
+				
+				easing: 'swing',
+				touchEnabled: true,
+				auto: true,
+				autoControls: true,
+				pager: true,
+				
+				buildPager: function(slideIndex){
+				  switch (slideIndex){
+					
+					
+						{% for  image in images %}																	
+								case {{ forloop.counter|add:-1  }}:
+									return '<a href=""><img src="{% thumbnail image.src 115x80 crop %}" /> </a> ' ; 
+						{% endfor %}
+					   
+					}
+				}
+				
+
+			}	
+		);
+	});
+	
+</script>	
+
+

@@ -1,0 +1,36 @@
+
+{% load thumbnail debug_tags %}
+
+
+<div class="slider1">
+	
+	{% for image in images %}
+		
+			<div class="slide"> 
+				<img src="{% thumbnail image.src 115x80 crop %}" />
+				
+				
+			</div>
+		
+	{% endfor %}
+
+</div>
+
+<script>
+		
+		$(document).ready(function($){
+  $('.slider1').bxSlider({
+    slideWidth: 200,
+    minSlides: 1,
+    maxSlides: 4,
+    slideMargin: 1,
+    auto: true, 
+    pager: false
+  });
+});
+		
+		
+		
+	
+	
+</script>	
